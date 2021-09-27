@@ -1,15 +1,32 @@
 import React from 'react';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 
-import {StyleSheet, Text, View} from 'react-native';
+import PlacesNavigator from './navigation/PlacesNavigator';
+import placesReducer from './store/places-reducer';
 
-const App = () => {
+import {init} from './helpers/db';
+
+console.log('ba');
+init()
+  .then(() => {
+    console.log('Initialized database');
+  })
+  .catch(err => {
+    console.log('Initializing database failed: ' + err);
+  });
+
+const rootReducer = combineReducers({
+  places: placesReducer,
+});
+
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+
+export default function App() {
   return (
-    <View>
-      <Text> ok test </Text>
-    </View>
+    <Provider store={store}>
+      <PlacesNavigator />
+    </Provider>
   );
-};
-
-const styles = StyleSheet.create({});
-
-export default App;
+}
