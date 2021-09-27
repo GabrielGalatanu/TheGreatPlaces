@@ -50,7 +50,7 @@ export const addPlace = (title, image, location) => {
       throw new Error('Something went wrong!');
     }
     const address = resData.results[0].formatted_address;
-    let path = RNFS.DocumentDirectoryPath + image.split('/').pop();
+    let path = RNFS.DocumentDirectoryPath + '/' + image.split('/').pop();
     let imageName = image.split('/').pop();
 
     RNFS.copyFile(image, path)
@@ -79,6 +79,8 @@ export const addPlace = (title, image, location) => {
       .catch(err => {
         console.log(err.message);
       });
+
+    console.log('test end');
   };
 };
 

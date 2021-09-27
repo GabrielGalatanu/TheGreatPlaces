@@ -23,7 +23,7 @@ const PlaceDetailScreen = props => {
 
   return (
     <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
-      <Image source={{ uri: 'file://' + FileSytem.DocumentDirectoryPath + selectedPlace.imageUri }} style={styles.image} />
+      <Image source={{ uri: 'file://' + FileSytem.DocumentDirectoryPath + '/' + selectedPlace.imageUri }} style={styles.image} />
       <View style={styles.locationContainer}>
         <View style={styles.addressContainer}>
           <Text style={styles.address}>{selectedPlace.address}</Text>

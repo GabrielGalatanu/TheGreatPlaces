@@ -13,8 +13,6 @@ import Geolocation from '@react-native-community/geolocation';
 import MapPreview from './MapPreview';
 
 const LocationPicker = props => {
-  const [initialPosition, setInitialPosition] = useState('');
-  const [lastPosition, setLastPosition] = useState('');
   const [location, setLocation] = useState('');
 
   const mapPickedLocation = props.navigation.getParam('pickedLocation');
@@ -76,17 +74,6 @@ const LocationPicker = props => {
           color={Colors.primary}
           onPress={pickOnMapHandler}
         />
-      </View>
-
-      <View>
-        <Text>
-          <Text style={styles.title}>Initial position: </Text>
-          {initialPosition}
-        </Text>
-        <Text>
-          <Text style={styles.title}>Current position: </Text>
-          {lastPosition}
-        </Text>
       </View>
     </View>
   );
